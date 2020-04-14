@@ -1,5 +1,6 @@
-ThisBuild / scalaVersion := "2.12.10"
-ThisBuild / organization := "com.alejandrohdezma"
+ThisBuild / scalaVersion         := "2.12.10"
+ThisBuild / organization         := "com.alejandrohdezma"
+ThisBuild / scalafixDependencies ++= scalafixDefaultDependencies
 
 Global / onChangedBuildSource := ReloadOnSourceChanges
 
