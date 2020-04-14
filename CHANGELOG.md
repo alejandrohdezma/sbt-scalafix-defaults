@@ -6,6 +6,7 @@
 
 🚀 **Features**
 
+- Create first version of the plugin [\#6](https://github.com/alejandrohdezma/sbt-scalafix-defaults/pull/6) ([alejandrohdezma](https://github.com/alejandrohdezma))
 - Create basic build [\#3](https://github.com/alejandrohdezma/sbt-scalafix-defaults/pull/3) ([alejandrohdezma](https://github.com/alejandrohdezma))
 
 
