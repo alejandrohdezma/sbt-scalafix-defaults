@@ -1,0 +1,4 @@
+# this test ensures the .scalafix.conf file is correctly copied
+> scalafix
+$ must-mirror .scalafix.conf expected.conf
+$ must-mirror src/main/scala/Main.scala src/main/resources/Main.scala_expected

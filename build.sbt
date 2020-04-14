@@ -4,7 +4,7 @@ ThisBuild / scalafixDependencies ++= scalafixDefaultDependencies
 
 Global / onChangedBuildSource := ReloadOnSourceChanges
 
-addCommandAlias("ci-test", "scalafmtCheckAll; scalafmtSbtCheck; mdoc")
+addCommandAlias("ci-test", "scalafmtCheckAll; scalafmtSbtCheck; mdoc; scripted")
 addCommandAlias("ci-docs", "mdoc; headerCreateAll")
 
 skip in publish := true
@@ -20,4 +20,5 @@ lazy val docs = project
 lazy val `sbt-scalafix-defaults` = project
   .enablePlugins(SbtPlugin)
   .settings(addSbtPlugin(scalafix))
+  .settings(scriptedLaunchOpts += s"-Dplugin.version=${version.value}")
   .settings(Compile / unmanagedResources += baseDirectory.value.getParentFile / ".scalafix.conf")
