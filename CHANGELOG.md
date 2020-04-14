@@ -1,8 +1,8 @@
 # Changelog
 
-## [Unreleased](https://github.com/alejandrohdezma/sbt-scalafix-defaults/tree/HEAD)
+## [v0.1.0](https://github.com/alejandrohdezma/sbt-scalafix-defaults/tree/v0.1.0) (2020-04-14)
 
-[Full Changelog](https://github.com/alejandrohdezma/sbt-scalafix-defaults/compare/6f1e53fccb7c4f74f50664472c3c73bec0f17f40...HEAD)
+[Full Changelog](https://github.com/alejandrohdezma/sbt-scalafix-defaults/compare/6f1e53fccb7c4f74f50664472c3c73bec0f17f40...v0.1.0)
 
 🚀 **Features**
 
