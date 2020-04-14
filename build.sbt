@@ -17,3 +17,4 @@ lazy val docs = project
 
 lazy val `sbt-scalafix-defaults` = project
   .enablePlugins(SbtPlugin)
+  .settings(Compile / unmanagedResources += baseDirectory.value.getParentFile / ".scalafix.conf")
