@@ -9,6 +9,8 @@ addCommandAlias("ci-docs", "mdoc; headerCreateAll")
 
 skip in publish := true
 
+lazy val scalafix = "ch.epfl.scala" % "sbt-scalafix" % "[0.9.0,)" % Provided // scala-steward:off
+
 lazy val docs = project
   .in(file("sbt-scalafix-defaults-docs"))
   .enablePlugins(MdocPlugin)
@@ -17,4 +19,5 @@ lazy val docs = project
 
 lazy val `sbt-scalafix-defaults` = project
   .enablePlugins(SbtPlugin)
+  .settings(addSbtPlugin(scalafix))
   .settings(Compile / unmanagedResources += baseDirectory.value.getParentFile / ".scalafix.conf")
