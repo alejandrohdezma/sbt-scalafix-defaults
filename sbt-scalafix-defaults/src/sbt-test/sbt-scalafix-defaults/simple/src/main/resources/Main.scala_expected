@@ -1,0 +1,9 @@
+import java.util.UUID
+
+import scala.List
+
+object Main {
+
+  def method(parameter1: UUID, parameter2: List[String]) = ???
+
+}
