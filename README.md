@@ -1,4 +1,4 @@
-# docs
+# Default (and sane) configurations for Scalafix
 
 [![][github-action-badge]][github-action] [![][maven-badge]][maven] [![][steward-badge]][steward]  [![][mergify-badge]][mergify]
 
@@ -7,7 +7,7 @@
 Add the following line to your `plugins.sbt` file:
 
 ```sbt
-addSbtPlugin("com.alejandrohdezma" %% "sbt-scalafix-defaults" % "0.0.0")
+addSbtPlugin("com.alejandrohdezma" %% "sbt-scalafix-defaults" % "0.1.0")
 ```
 
 > You'll also need to provide the [`sbt-scalafix` plugin](https://github.com/scalacenter/sbt-scalafix). 
