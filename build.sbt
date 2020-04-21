@@ -1,11 +1,12 @@
-ThisBuild / scalaVersion         := "2.12.10"
+ThisBuild / scalaVersion         := "2.12.11"
 ThisBuild / organization         := "com.alejandrohdezma"
 ThisBuild / scalafixDependencies ++= scalafixDefaultDependencies
 
 Global / onChangedBuildSource := ReloadOnSourceChanges
 
-addCommandAlias("ci-test", "scalafmtCheckAll; scalafmtSbtCheck; mdoc; scripted")
-addCommandAlias("ci-docs", "mdoc; headerCreateAll")
+addCommandAlias("ci-test", "fix --check; mdoc; scripted")
+addCommandAlias("ci-docs", "github; mdoc; headerCreateAll")
+addCommandAlias("ci-publish", "github; ci-release")
 
 skip in publish := true
 

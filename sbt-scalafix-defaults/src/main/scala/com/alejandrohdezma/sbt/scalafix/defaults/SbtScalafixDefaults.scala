@@ -16,13 +16,14 @@
 
 package com.alejandrohdezma.sbt.scalafix.defaults
 
-import com.alejandrohdezma.sbt.scalafix.defaults.ScalafixDependenciesPlugin.autoImport.scalafixDefaultDependencies
+import scala.io.Source
+
 import sbt.Keys.onLoad
 import sbt._
+
+import com.alejandrohdezma.sbt.scalafix.defaults.ScalafixDependenciesPlugin.autoImport.scalafixDefaultDependencies
 import scalafix.sbt.ScalafixPlugin
 import scalafix.sbt.ScalafixPlugin.autoImport._
-
-import scala.io.Source
 
 object SbtScalafixDefaults extends AutoPlugin {
 
@@ -30,6 +31,7 @@ object SbtScalafixDefaults extends AutoPlugin {
 
   override def trigger = allRequirements
 
+  @SuppressWarnings(Array("scalafix:Disable.blocking.io"))
   override def globalSettings: Seq[Def.Setting[_]] = Seq(
     scalafixDependencies ++= scalafixDefaultDependencies,
     onLoad := onLoad.value andThen { state =>
