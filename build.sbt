@@ -4,7 +4,7 @@ ThisBuild / scalafixDependencies ++= scalafixDefaultDependencies
 
 Global / onChangedBuildSource := ReloadOnSourceChanges
 
-addCommandAlias("ci-test", "scalafmtCheckAll; scalafmtSbtCheck; mdoc; scripted")
+addCommandAlias("ci-test", "fix --check; mdoc; scripted")
 addCommandAlias("ci-docs", "github; mdoc; headerCreateAll")
 
 skip in publish := true
