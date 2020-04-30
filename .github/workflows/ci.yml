@@ -26,7 +26,7 @@ jobs:
       - name: Run checks
         run: sbt ci-test
       - name: Automerge Scala Steward PRs
-        if: success() && github.event_name == 'pull_request' && github.event.pull_request.pull_request.user.login == 'alejandrohdezma'
+        if: success() && github.event_name == 'pull_request' && github.event.pull_request.user.login == 'alejandrohdezma'
         uses: "pascalgn/automerge-action@v0.8.1"
         env:
           GITHUB_TOKEN: "${{ secrets.ADMIN_GITHUB_TOKEN }}"
