@@ -14,7 +14,7 @@ addSbtPlugin("com.alejandrohdezma" %% "sbt-scalafix-defaults" % "@VERSION@")
 
 ## Usage
 
-The included plugin is automatically activated. It will add some defualt dependencies to `scalafixDependencies` and create a `.scalafix.conf` in your project's root folder with [this content](https://github.com/alejandrohdezma/sbt-scalafix-defaults/blob/master/.scalafix.conf).
+The included plugin activated automatically. It will add some default dependencies to `scalafixDependencies` and create a `.scalafix.conf` in your project's root folder with [this content](https://github.com/alejandrohdezma/sbt-scalafix-defaults/blob/master/.scalafix.conf).
 
 > You can add the `.scalafix.conf` file to the repository's `.gitignore`, since it's going to be automatically re-created on every build.
 
