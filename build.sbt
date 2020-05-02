@@ -25,3 +25,4 @@ lazy val `sbt-scalafix-defaults` = project
   .settings(scalacOptions --= scalacOptionsFor(scalaVersion.value))
   .settings(scriptedLaunchOpts += s"-Dplugin.version=${version.value}")
   .settings(Compile / unmanagedResources += baseDirectory.value.getParentFile / ".scalafix.conf")
+  .settings(libraryDependencies += "org.typelevel" %% "cats-core" % "2.1.1" % Test)
