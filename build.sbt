@@ -19,6 +19,7 @@ lazy val docs = project
   .settings(mdocOut := file("."))
 
 lazy val `sbt-scalafix-defaults` = project
+  .enablePlugins(TestsPlugin)
   .enablePlugins(SbtPlugin)
   .settings(addSbtPlugin(scalafix))
   .settings(scriptedLaunchOpts += s"-Dplugin.version=${version.value}")
