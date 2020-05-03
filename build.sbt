@@ -4,7 +4,7 @@ ThisBuild / scalafixDependencies ++= scalafixDefaultDependencies
 
 Global / onChangedBuildSource := ReloadOnSourceChanges
 
-addCommandAlias("ci-test", "fix --check; mdoc; scripted")
+addCommandAlias("ci-test", "fix --check; mdoc; test; scripted")
 addCommandAlias("ci-docs", "github; mdoc; headerCreateAll")
 addCommandAlias("ci-publish", "github; ci-release")
 
@@ -19,7 +19,10 @@ lazy val docs = project
   .settings(mdocOut := file("."))
 
 lazy val `sbt-scalafix-defaults` = project
+  .enablePlugins(TestsPlugin)
   .enablePlugins(SbtPlugin)
   .settings(addSbtPlugin(scalafix))
+  .settings(scalacOptions --= scalacOptionsFor(scalaVersion.value))
   .settings(scriptedLaunchOpts += s"-Dplugin.version=${version.value}")
   .settings(Compile / unmanagedResources += baseDirectory.value.getParentFile / ".scalafix.conf")
+  .settings(libraryDependencies += "org.typelevel" %% "cats-core" % "2.1.1" % Test)
