@@ -1,5 +1,27 @@
 # Changelog
 
+## [v0.2.0](https://github.com/alejandrohdezma/sbt-scalafix-defaults/tree/v0.2.0) (2020-05-03)
+
+[Full Changelog](https://github.com/alejandrohdezma/sbt-scalafix-defaults/compare/v0.1.0...v0.2.0)
+
+🚀 **Features**
+
+- Change `sort-imports` rule for `organize-imports` [\#23](https://github.com/alejandrohdezma/sbt-scalafix-defaults/pull/23) ([alejandrohdezma](https://github.com/alejandrohdezma))
+
+📈 **Dependency updates**
+
+- Update sort-imports to 0.4.1 [\#22](https://github.com/alejandrohdezma/sbt-scalafix-defaults/pull/22) ([alejandrohdezma](https://github.com/alejandrohdezma))
+- Update scaluzzi to 0.1.7 [\#21](https://github.com/alejandrohdezma/sbt-scalafix-defaults/pull/21) ([alejandrohdezma](https://github.com/alejandrohdezma))
+- Update sbt-ci-release to 1.5.3 [\#20](https://github.com/alejandrohdezma/sbt-scalafix-defaults/pull/20) ([alejandrohdezma](https://github.com/alejandrohdezma))
+- Update sbt-scalafix to 0.9.15 [\#19](https://github.com/alejandrohdezma/sbt-scalafix-defaults/pull/19) ([alejandrohdezma](https://github.com/alejandrohdezma))
+- Update sbt-github to version 0.8.2 [\#18](https://github.com/alejandrohdezma/sbt-scalafix-defaults/pull/18) ([alejandrohdezma](https://github.com/alejandrohdezma))
+- Update Scala, SBT & plugins to latest version [\#16](https://github.com/alejandrohdezma/sbt-scalafix-defaults/pull/16) ([alejandrohdezma](https://github.com/alejandrohdezma))
+
+**Merged pull requests:**
+
+- Add tests for validating Scalafix configuration [\#24](https://github.com/alejandrohdezma/sbt-scalafix-defaults/pull/24) ([alejandrohdezma](https://github.com/alejandrohdezma))
+- Add CODEOWNERS [\#17](https://github.com/alejandrohdezma/sbt-scalafix-defaults/pull/17) ([alejandrohdezma](https://github.com/alejandrohdezma))
+
 ## [v0.1.0](https://github.com/alejandrohdezma/sbt-scalafix-defaults/tree/v0.1.0) (2020-04-14)
 
 [Full Changelog](https://github.com/alejandrohdezma/sbt-scalafix-defaults/compare/6f1e53fccb7c4f74f50664472c3c73bec0f17f40...v0.1.0)
