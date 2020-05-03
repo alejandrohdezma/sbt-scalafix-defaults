@@ -4,7 +4,7 @@ ThisBuild / scalafixDependencies ++= scalafixDefaultDependencies
 
 Global / onChangedBuildSource := ReloadOnSourceChanges
 
-addCommandAlias("ci-test", "fix --check; mdoc; scripted")
+addCommandAlias("ci-test", "fix --check; mdoc; test; scripted")
 addCommandAlias("ci-docs", "github; mdoc; headerCreateAll")
 addCommandAlias("ci-publish", "github; ci-release")
 
