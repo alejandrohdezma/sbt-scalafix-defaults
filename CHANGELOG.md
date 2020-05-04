@@ -1,5 +1,9 @@
 # Changelog
 
+## [v0.2.1](https://github.com/alejandrohdezma/sbt-scalafix-defaults/tree/v0.2.1) (2020-05-04)
+
+[Full Changelog](https://github.com/alejandrohdezma/sbt-scalafix-defaults/compare/v0.2.0...v0.2.1)
+
 ## [v0.2.0](https://github.com/alejandrohdezma/sbt-scalafix-defaults/tree/v0.2.0) (2020-05-03)
 
 [Full Changelog](https://github.com/alejandrohdezma/sbt-scalafix-defaults/compare/v0.1.0...v0.2.0)
@@ -19,6 +23,7 @@
 
 **Merged pull requests:**
 
+- Fix wrong ID in `Disable.URL` message [\#25](https://github.com/alejandrohdezma/sbt-scalafix-defaults/pull/25) ([alejandrohdezma](https://github.com/alejandrohdezma))
 - Add tests for validating Scalafix configuration [\#24](https://github.com/alejandrohdezma/sbt-scalafix-defaults/pull/24) ([alejandrohdezma](https://github.com/alejandrohdezma))
 - Add CODEOWNERS [\#17](https://github.com/alejandrohdezma/sbt-scalafix-defaults/pull/17) ([alejandrohdezma](https://github.com/alejandrohdezma))
 
