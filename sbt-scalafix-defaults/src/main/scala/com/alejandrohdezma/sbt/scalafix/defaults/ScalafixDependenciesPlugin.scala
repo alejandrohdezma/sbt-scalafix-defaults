@@ -29,7 +29,7 @@ object ScalafixDependenciesPlugin extends AutoPlugin {
     /** Scalafix dependencies added by this plugin */
     lazy val scalafixDefaultDependencies: Seq[ModuleID] = Seq(
       "com.eed3si9n.fix"     %% "scalafix-noinfer" % "0.1.0-M1",
-      "com.github.liancheng" %% "organize-imports" % "0.2.1",
+      "com.github.liancheng" %% "organize-imports" % "0.3.0",
       "com.github.vovapolu"  %% "scaluzzi"         % "0.1.7"
     )
 
