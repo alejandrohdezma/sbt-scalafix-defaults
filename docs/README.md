@@ -7,7 +7,7 @@
 Add the following line to your `plugins.sbt` file:
 
 ```sbt
-addSbtPlugin("com.alejandrohdezma" %% "sbt-scalafix-defaults" % "@VERSION@")
+addSbtPlugin("com.alejandrohdezma" % "sbt-scalafix-defaults" % "@VERSION@")
 ```
 
 > You'll also need to provide the [`sbt-scalafix` plugin](https://github.com/scalacenter/sbt-scalafix). 
