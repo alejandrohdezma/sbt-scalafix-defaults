@@ -39,6 +39,12 @@ object SbtScalafixDefaults extends AutoPlugin {
         val configurations = Source.fromResource(".scalafix.conf", getClass.getClassLoader).mkString
         IO.write(file(".scalafix.conf"), noEditWarning)
         IO.append(file(".scalafix.conf"), configurations)
+
+        val extra = file(".scalafix-extra.conf")
+
+        if (extra.exists())
+          IO.append(file(".scalafix.conf"), "\n" + IO.read(extra))
+
         state
       }
     )
