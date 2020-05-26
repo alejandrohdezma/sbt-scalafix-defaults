@@ -32,15 +32,16 @@ object SbtScalafixDefaults extends AutoPlugin {
   override def trigger = allRequirements
 
   @SuppressWarnings(Array("scalafix:Disable.blocking.io"))
-  override def globalSettings: Seq[Def.Setting[_]] = Seq(
-    scalafixDependencies ++= scalafixDefaultDependencies,
-    onLoad := onLoad.value andThen { state =>
-      val configurations = Source.fromResource(".scalafix.conf", getClass.getClassLoader).mkString
-      IO.write(file(".scalafix.conf"), noEditWarning)
-      IO.append(file(".scalafix.conf"), configurations)
-      state
-    }
-  )
+  override def globalSettings: Seq[Def.Setting[_]] =
+    Seq(
+      scalafixDependencies ++= scalafixDefaultDependencies,
+      onLoad := onLoad.value andThen { state =>
+        val configurations = Source.fromResource(".scalafix.conf", getClass.getClassLoader).mkString
+        IO.write(file(".scalafix.conf"), noEditWarning)
+        IO.append(file(".scalafix.conf"), configurations)
+        state
+      }
+    )
 
   private val noEditWarning =
     """# This file has been automatically generated and should

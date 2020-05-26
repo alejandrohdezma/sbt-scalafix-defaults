@@ -20,7 +20,7 @@ object TestsPlugin extends AutoPlugin {
   override def projectSettings: Seq[Def.Setting[_]] =
     Seq(
       libraryDependencies                    += testkit % Test cross CrossVersion.full,
-      libraryDependencies                    ++= scalafixDependencies.value.map(_ % Test),
+      libraryDependencies                   ++= scalafixDependencies.value.map(_ % Test),
       sourceGenerators.in(Test)              += generateTests.taskValue,
       sourceGenerators.in(Test)              += generateInput.taskValue,
       scalafixTestkitOutputSourceDirectories := Seq(resourceDirectory.in(Test).value / "output"),
