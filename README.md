@@ -7,16 +7,20 @@
 Add the following line to your `plugins.sbt` file:
 
 ```sbt
-addSbtPlugin("com.alejandrohdezma" % "sbt-scalafix-defaults" % "0.2.2")
+addSbtPlugin("com.alejandrohdezma" % "sbt-scalafix-defaults" % "0.2.3")
 ```
 
 > You'll also need to provide the [`sbt-scalafix` plugin](https://github.com/scalacenter/sbt-scalafix). 
 
 ## Usage
 
-The included plugin activated automatically. It will add some default dependencies to `scalafixDependencies` and create a `.scalafix.conf` in your project's root folder with [this content](https://github.com/alejandrohdezma/sbt-scalafix-defaults/blob/master/.scalafix.conf).
+The included plugin activates automatically. It will add some default dependencies to `scalafixDependencies` and create a `.scalafix.conf` in your project's root folder with [this content](https://github.com/alejandrohdezma/sbt-scalafix-defaults/blob/master/.scalafix.conf).
 
 > You can add the `.scalafix.conf` file to the repository's `.gitignore`, since it's going to be automatically re-created on every build.
+
+### Extra configurations
+
+Extra configurations can be added to a file named `.scalafix-extra.conf` at the root of your repository. The content of this file will be automatically appended to the auto-generated `.scalafix.conf`.
 
 [github-action]: https://github.com/alejandrohdezma/sbt-scalafix-defaults/actions
 [github-action-badge]: https://img.shields.io/endpoint.svg?url=https%3A%2F%2Factions-badge.atrox.dev%2Falejandrohdezma%2Fsbt-scalafix-defaults%2Fbadge%3Fref%3Dmaster&style=flat
