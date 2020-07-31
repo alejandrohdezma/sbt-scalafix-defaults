@@ -8,21 +8,17 @@ addCommandAlias("ci-test", "fix --check; mdoc; test; scripted")
 addCommandAlias("ci-docs", "github; mdoc; headerCreateAll")
 addCommandAlias("ci-publish", "github; ci-release")
 
-skip in publish := true
-
 lazy val scalafix = "ch.epfl.scala" % "sbt-scalafix" % "[0.9.0,)" % Provided // scala-steward:off
 
-lazy val docs = project
-  .in(file("sbt-scalafix-defaults-docs"))
+lazy val documentation = project
   .enablePlugins(MdocPlugin)
-  .settings(skip in publish := true)
   .settings(mdocOut := file("."))
 
-lazy val `sbt-scalafix-defaults` = project
+lazy val `sbt-scalafix-defaults` = module
   .enablePlugins(TestsPlugin)
   .enablePlugins(SbtPlugin)
   .settings(addSbtPlugin(scalafix))
   .settings(scalacOptions.in(Test) --= scalacOptionsFor(scalaVersion.value))
   .settings(scriptedLaunchOpts += s"-Dplugin.version=${version.value}")
-  .settings(Compile / unmanagedResources += baseDirectory.value.getParentFile / ".scalafix.conf")
+  .settings(Compile / unmanagedResources += baseDirectory.in(LocalRootProject).value / ".scalafix.conf")
   .settings(libraryDependencies += "org.typelevel" %% "cats-core" % "2.1.1" % Test)

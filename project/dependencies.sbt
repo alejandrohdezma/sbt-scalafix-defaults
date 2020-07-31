@@ -3,5 +3,5 @@ unmanagedSources in Compile += {
   baseDirectory
     .in(LocalRootProject)
     .value
-    .getParentFile / "sbt-scalafix-defaults" / "src" / "main" / "scala" / "com" / "alejandrohdezma" / "sbt" / "scalafix" / "defaults" / "ScalafixDependenciesPlugin.scala"
+    .getParentFile / "modules" / "sbt-scalafix-defaults" / "src" / "main" / "scala" / "com" / "alejandrohdezma" / "sbt" / "scalafix" / "defaults" / "ScalafixDependenciesPlugin.scala"
 }

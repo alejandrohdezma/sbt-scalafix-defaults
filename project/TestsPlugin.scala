@@ -33,7 +33,7 @@ object TestsPlugin extends AutoPlugin {
   private val generateInput = Def.task {
     val inputDirectory = (resourceDirectory in Test).value / "input"
 
-    val scalafixConf = IO.read(baseDirectory.value.getParentFile / ".scalafix.conf")
+    val scalafixConf = IO.read(baseDirectory.in(LocalRootProject).value / ".scalafix.conf")
 
     inputDirectory.listFiles.toSeq.map { file =>
       val newFile = (sourceManaged in Test).value / "input" / file.getName
