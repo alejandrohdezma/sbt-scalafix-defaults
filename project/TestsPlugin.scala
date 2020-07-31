@@ -49,7 +49,10 @@ object TestsPlugin extends AutoPlugin {
   private val generateTests = Def.task {
     val file = (sourceManaged in Test).value / "RuleSuite.scala"
 
-    val suite = "class RuleSuite extends scalafix.testkit.SemanticRuleSuite() { runAllTests() }"
+    val suite =
+      """class RuleSuite extends scalafix.testkit.AbstractSemanticRuleSuite with org.scalatest.FunSpecLike {
+        |   runAllTests()
+        |}""".stripMargin
 
     IO.write(file, suite)
 
