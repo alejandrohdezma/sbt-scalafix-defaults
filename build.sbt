@@ -2,8 +2,6 @@ ThisBuild / scalaVersion          := "2.12.12"
 ThisBuild / organization          := "com.alejandrohdezma"
 ThisBuild / scalafixDependencies ++= scalafixDefaultDependencies
 
-Global / onChangedBuildSource := ReloadOnSourceChanges
-
 addCommandAlias("ci-test", "fix --check; mdoc; test; scripted")
 addCommandAlias("ci-docs", "github; mdoc; headerCreateAll")
 addCommandAlias("ci-publish", "github; ci-release")
