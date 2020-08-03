@@ -18,10 +18,11 @@ package com.alejandrohdezma.sbt.scalafix.defaults
 
 import scala.io.Source
 
-import sbt.Keys.onLoad
+import sbt.Def
+import sbt.Keys._
 import sbt._
 
-import com.alejandrohdezma.sbt.scalafix.defaults.ScalafixDependenciesPlugin.autoImport.scalafixDefaultDependencies
+import com.alejandrohdezma.sbt.scalafix.defaults.ScalafixDependenciesPlugin.autoImport._
 import scalafix.sbt.ScalafixPlugin
 import scalafix.sbt.ScalafixPlugin.autoImport._
 
@@ -31,14 +32,20 @@ object SbtScalafixDefaults extends AutoPlugin {
 
   override def trigger = allRequirements
 
+  override def buildSettings: Seq[Def.Setting[_]] =
+    Seq(
+      semanticdbEnabled := true,
+      semanticdbVersion := scalafixSemanticdb.revision
+    )
+
   @SuppressWarnings(Array("scalafix:Disable.blocking.io"))
   override def globalSettings: Seq[Def.Setting[_]] =
     Seq(
+      scalafixOnCompile     := true,
       scalafixDependencies ++= scalafixDefaultDependencies,
       onLoad := onLoad.value andThen { state =>
-        val configurations = Source.fromResource(".scalafix.conf", getClass.getClassLoader).mkString
-        IO.write(file(".scalafix.conf"), noEditWarning)
-        IO.append(file(".scalafix.conf"), configurations)
+        val defaults = Source.fromResource(".scalafix.conf", getClass.getClassLoader).mkString
+        IO.write(file(".scalafix.conf"), defaults)
 
         val extra = file(".scalafix-extra.conf")
 
@@ -49,13 +56,9 @@ object SbtScalafixDefaults extends AutoPlugin {
       }
     )
 
-  private val noEditWarning =
-    """# This file has been automatically generated and should
-      |# not be edited nor added to source control systems.
-      |
-      |# To edit the original configurations go to
-      |# https://github.com/alejandrohdezma/sbt-scalafix-defaults/edit/master/.scalafix.conf
-      |
-      |""".stripMargin
-
+  override def projectSettings: Seq[Def.Setting[_]] =
+    Seq(
+      scalacOptions += "-Yrangepos",
+      scalacOptions += s"-Xplugin-require:semanticdb"
+    )
 }
