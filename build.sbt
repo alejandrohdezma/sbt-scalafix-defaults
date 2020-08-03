@@ -4,7 +4,7 @@ ThisBuild / scalafixDependencies ++= scalafixDefaultDependencies
 
 addCommandAlias("ci-test", "scalafixEnable; fix --check; mdoc; test; scripted")
 addCommandAlias("ci-docs", "github; mdoc; headerCreateAll")
-addCommandAlias("ci-publish", "github; ci-release")
+addCommandAlias("ci-publish", "github; scalafixEnable; ci-release")
 
 lazy val scalafix = "ch.epfl.scala" % "sbt-scalafix" % "[0.9.0,)" % Provided // scala-steward:off
 
