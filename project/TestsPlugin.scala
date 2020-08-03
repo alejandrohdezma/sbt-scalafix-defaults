@@ -1,4 +1,5 @@
 import sbt.Keys._
+import sbt.Def
 import sbt._
 import sbt.plugins._
 
@@ -6,6 +7,8 @@ import scalafix.sbt.BuildInfo.scalafixVersion
 import scalafix.sbt.ScalafixPlugin.autoImport.scalafixDependencies
 import scalafix.sbt.ScalafixTestkitPlugin.autoImport._
 import scalafix.sbt.ScalafixTestkitPlugin
+
+import com.alejandrohdezma.sbt.scalafix.defaults.SbtScalafixDefaults
 
 /**
  * Enable testing of a `.scalafix.conf` file using `ScalafixTestkitPlugin`.
@@ -15,7 +18,12 @@ import scalafix.sbt.ScalafixTestkitPlugin
  */
 object TestsPlugin extends AutoPlugin {
 
-  override def requires: Plugins = JvmPlugin
+  override def requires: Plugins = SbtScalafixDefaults
+
+  override def buildSettings: Seq[Def.Setting[_]] =
+    Seq(
+      semanticdbEnabled := false
+    )
 
   override def projectSettings: Seq[Def.Setting[_]] =
     Seq(

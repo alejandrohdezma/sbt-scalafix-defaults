@@ -2,7 +2,7 @@ ThisBuild / scalaVersion          := "2.12.12"
 ThisBuild / organization          := "com.alejandrohdezma"
 ThisBuild / scalafixDependencies ++= scalafixDefaultDependencies
 
-addCommandAlias("ci-test", "fix --check; mdoc; test; scripted")
+addCommandAlias("ci-test", "scalafixEnable; fix --check; mdoc; test; scripted")
 addCommandAlias("ci-docs", "github; mdoc; headerCreateAll")
 addCommandAlias("ci-publish", "github; ci-release")
 
