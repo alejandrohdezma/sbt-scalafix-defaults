@@ -1,5 +1,17 @@
 # Changelog
 
+## [v0.3.1](https://github.com/alejandrohdezma/sbt-scalafix-defaults/tree/v0.3.1) (2020-09-04)
+
+[Full Changelog](https://github.com/alejandrohdezma/sbt-scalafix-defaults/compare/v0.3.0...v0.3.1)
+
+📈 **Dependency updates**
+
+- Update cats-core to 2.2.0 [\#58](https://github.com/alejandrohdezma/sbt-scalafix-defaults/pull/58) ([alejandrohdezma](https://github.com/alejandrohdezma))
+- Update sbt-mdoc to 2.2.6 [\#57](https://github.com/alejandrohdezma/sbt-scalafix-defaults/pull/57) ([alejandrohdezma](https://github.com/alejandrohdezma))
+- Update sbt-scalafix, scalafix-testkit to 0.9.20 [\#56](https://github.com/alejandrohdezma/sbt-scalafix-defaults/pull/56) ([alejandrohdezma](https://github.com/alejandrohdezma))
+- Update sbt-mdoc to 2.2.5 [\#55](https://github.com/alejandrohdezma/sbt-scalafix-defaults/pull/55) ([alejandrohdezma](https://github.com/alejandrohdezma))
+- Update sbt-mdoc to 2.2.4 [\#54](https://github.com/alejandrohdezma/sbt-scalafix-defaults/pull/54) ([alejandrohdezma](https://github.com/alejandrohdezma))
+
 ## [v0.3.0](https://github.com/alejandrohdezma/sbt-scalafix-defaults/tree/v0.3.0) (2020-08-03)
 
 [Full Changelog](https://github.com/alejandrohdezma/sbt-scalafix-defaults/compare/v0.2.3...v0.3.0)
@@ -33,7 +45,6 @@
 - Update sbt to 1.3.12 [\#34](https://github.com/alejandrohdezma/sbt-scalafix-defaults/pull/34) ([alejandrohdezma](https://github.com/alejandrohdezma))
 - Update scalafix-testkit to 0.9.16 [\#33](https://github.com/alejandrohdezma/sbt-scalafix-defaults/pull/33) ([alejandrohdezma](https://github.com/alejandrohdezma))
 - Update sbt-scalafix to 0.9.16 [\#32](https://github.com/alejandrohdezma/sbt-scalafix-defaults/pull/32) ([alejandrohdezma](https://github.com/alejandrohdezma))
-- Update sbt-scalafmt to 2.4.0 [\#29](https://github.com/alejandrohdezma/sbt-scalafix-defaults/pull/29) ([alejandrohdezma](https://github.com/alejandrohdezma))
 
 ## [v0.2.3](https://github.com/alejandrohdezma/sbt-scalafix-defaults/tree/v0.2.3) (2020-05-26)
 
@@ -46,6 +57,7 @@
 📈 **Dependency updates**
 
 - Update sbt-scalafmt-defaults to 0.1.1 [\#30](https://github.com/alejandrohdezma/sbt-scalafix-defaults/pull/30) ([alejandrohdezma](https://github.com/alejandrohdezma))
+- Update sbt-scalafmt to 2.4.0 [\#29](https://github.com/alejandrohdezma/sbt-scalafix-defaults/pull/29) ([alejandrohdezma](https://github.com/alejandrohdezma))
 - Update organize-imports to 0.3.0 [\#28](https://github.com/alejandrohdezma/sbt-scalafix-defaults/pull/28) ([alejandrohdezma](https://github.com/alejandrohdezma))
 - Update sbt-mdoc to 2.2.0 [\#27](https://github.com/alejandrohdezma/sbt-scalafix-defaults/pull/27) ([alejandrohdezma](https://github.com/alejandrohdezma))
 
