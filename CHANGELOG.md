@@ -1,5 +1,19 @@
 # Changelog
 
+## [v0.3.2](https://github.com/alejandrohdezma/sbt-scalafix-defaults/tree/v0.3.2) (2020-09-16)
+
+[Full Changelog](https://github.com/alejandrohdezma/sbt-scalafix-defaults/compare/v0.3.1...v0.3.2)
+
+🚀 **Features**
+
+- Remove `scala.Any` from `NoInfer` and `Disable` rules [\#62](https://github.com/alejandrohdezma/sbt-scalafix-defaults/pull/62) ([alejandrohdezma](https://github.com/alejandrohdezma))
+
+📈 **Dependency updates**
+
+- Update sbt-mdoc to 2.2.8 [\#61](https://github.com/alejandrohdezma/sbt-scalafix-defaults/pull/61) ([alejandrohdezma](https://github.com/alejandrohdezma))
+- Update sbt-mdoc to 2.2.7 [\#60](https://github.com/alejandrohdezma/sbt-scalafix-defaults/pull/60) ([alejandrohdezma](https://github.com/alejandrohdezma))
+- Update sbt-scalafmt-defaults to 0.3.1 [\#59](https://github.com/alejandrohdezma/sbt-scalafix-defaults/pull/59) ([alejandrohdezma](https://github.com/alejandrohdezma))
+
 ## [v0.3.1](https://github.com/alejandrohdezma/sbt-scalafix-defaults/tree/v0.3.1) (2020-09-04)
 
 [Full Changelog](https://github.com/alejandrohdezma/sbt-scalafix-defaults/compare/v0.3.0...v0.3.1)
