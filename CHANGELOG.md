@@ -1,5 +1,14 @@
 # Changelog
 
+## [v0.4.0](https://github.com/alejandrohdezma/sbt-scalafix-defaults/tree/v0.4.0) (2020-09-16)
+
+[Full Changelog](https://github.com/alejandrohdezma/sbt-scalafix-defaults/compare/v0.3.2...v0.4.0)
+
+⚠️ **Breaking changes**
+
+- Remove `Disable.Product` & `Disable.Serializable` rules [\#64](https://github.com/alejandrohdezma/sbt-scalafix-defaults/pull/64) ([alejandrohdezma](https://github.com/alejandrohdezma))
+- Completely remove `NoInfer` rule due to false positives [\#63](https://github.com/alejandrohdezma/sbt-scalafix-defaults/pull/63) ([alejandrohdezma](https://github.com/alejandrohdezma))
+
 ## [v0.3.2](https://github.com/alejandrohdezma/sbt-scalafix-defaults/tree/v0.3.2) (2020-09-16)
 
 [Full Changelog](https://github.com/alejandrohdezma/sbt-scalafix-defaults/compare/v0.3.1...v0.3.2)
