@@ -45,6 +45,7 @@ object SbtScalafixDefaults extends AutoPlugin {
       scalafixDependencies ++= scalafixDefaultDependencies,
       onLoad := onLoad.value andThen { state =>
         val defaults = Source.fromResource(".scalafix.conf", getClass.getClassLoader).mkString
+
         IO.write(file(".scalafix.conf"), defaults)
 
         val extra = file(".scalafix-extra.conf")

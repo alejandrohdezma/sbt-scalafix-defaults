@@ -1,6 +1,7 @@
-ThisBuild / scalaVersion          := "2.12.12"
-ThisBuild / organization          := "com.alejandrohdezma"
-ThisBuild / scalafixDependencies ++= scalafixDefaultDependencies
+ThisBuild / scalaVersion                  := "2.12.12"
+ThisBuild / organization                  := "com.alejandrohdezma"
+ThisBuild / scalafixDependencies         ++= scalafixDefaultDependencies
+ThisBuild / pluginCrossBuild / sbtVersion := "1.3.0"
 
 addCommandAlias("ci-test", "scalafixEnable; fix --check; mdoc; test; scripted")
 addCommandAlias("ci-docs", "github; mdoc; headerCreateAll")
