@@ -1,4 +1,4 @@
-addSbtPlugin("ch.epfl.scala"             % "sbt-scalafix"             % "0.9.21")
+addSbtPlugin("ch.epfl.scala"             % "sbt-scalafix"             % "0.9.24")
 addSbtPlugin("com.alejandrohdezma"       % "sbt-remove-test-from-pom" % "0.1.0")
 addSbtPlugin("com.alejandrohdezma"       % "sbt-fix"                  % "0.7.0")
 addSbtPlugin("com.alejandrohdezma"       % "sbt-ci"                   % "1.1.3")
