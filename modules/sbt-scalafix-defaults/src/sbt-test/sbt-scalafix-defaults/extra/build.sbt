@@ -1,2 +1,0 @@
-addCompilerPlugin(scalafixSemanticdb)
-scalacOptions += "-Yrangepos"
