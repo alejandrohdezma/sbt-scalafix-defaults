@@ -6,6 +6,6 @@ object Main {
 
   
 
-  def method(parameter1: UUID, parameter2: List[String]): List[String] = List(s"$parameter1") ++ parameter2
+  def method(parameter1: UUID, parameter2: List[String]) = List(s"$parameter1") ++ parameter2
 
 }
