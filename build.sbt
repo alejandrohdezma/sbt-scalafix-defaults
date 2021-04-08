@@ -1,4 +1,4 @@
-ThisBuild / scalaVersion                  := "2.12.12"
+ThisBuild / scalaVersion                  := "2.12.13"
 ThisBuild / organization                  := "com.alejandrohdezma"
 ThisBuild / scalafixDependencies         ++= scalafixDefaultDependencies
 ThisBuild / pluginCrossBuild / sbtVersion := "1.3.0"
@@ -17,7 +17,7 @@ lazy val `sbt-scalafix-defaults` = module
   .enablePlugins(TestsPlugin)
   .enablePlugins(SbtPlugin)
   .settings(addSbtPlugin(scalafix))
-  .settings(scalacOptions.in(Test) --= scalacOptionsFor(scalaVersion.value))
+  .settings(Test / scalacOptions --= scalacOptionsFor(scalaVersion.value))
   .settings(scriptedLaunchOpts += s"-Dplugin.version=${version.value}")
-  .settings(Compile / unmanagedResources += baseDirectory.in(LocalRootProject).value / ".scalafix.conf")
+  .settings(Compile / unmanagedResources += (LocalRootProject / baseDirectory).value / ".scalafix.conf")
   .settings(libraryDependencies += "org.typelevel" %% "cats-core" % "2.5.0" % Test)

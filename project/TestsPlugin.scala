@@ -21,22 +21,22 @@ object TestsPlugin extends AutoPlugin {
     Seq(
       libraryDependencies                    += testkit % Test cross CrossVersion.full,
       libraryDependencies                   ++= scalafixDependencies.value.map(_ % Test),
-      sourceGenerators.in(Test)              += generateTests.taskValue,
-      sourceGenerators.in(Test)              += generateInput.taskValue,
-      scalafixTestkitOutputSourceDirectories := Seq(resourceDirectory.in(Test).value / "output"),
-      scalafixTestkitInputSourceDirectories  := Seq(sourceManaged.in(Test).value / "input"),
-      scalafixTestkitInputClasspath          := fullClasspath.in(ThisProject, Compile).value
+      Test / sourceGenerators                += generateTests.taskValue,
+      Test / sourceGenerators                += generateInput.taskValue,
+      scalafixTestkitOutputSourceDirectories := Seq((Test / resourceDirectory).value / "output"),
+      scalafixTestkitInputSourceDirectories  := Seq((Test / sourceManaged).value / "input"),
+      scalafixTestkitInputClasspath          := (ThisProject / Compile / fullClasspath).value
     ) ++ ScalafixTestkitPlugin.projectSettings
 
   val testkit = "ch.epfl.scala" % "scalafix-testkit" % scalafixVersion
 
   private val generateInput = Def.task {
-    val inputDirectory = (resourceDirectory in Test).value / "input"
+    val inputDirectory = (Test / resourceDirectory).value / "input"
 
-    val scalafixConf = IO.read(baseDirectory.in(LocalRootProject).value / ".scalafix.conf")
+    val scalafixConf = IO.read((LocalRootProject / baseDirectory).value / ".scalafix.conf")
 
     inputDirectory.listFiles.toSeq.map { file =>
-      val newFile = (sourceManaged in Test).value / "input" / file.getName
+      val newFile = (Test / sourceManaged).value / "input" / file.getName
 
       val content = s"/*\n$scalafixConf\n*/\n\n" + IO.read(file)
 
@@ -47,7 +47,7 @@ object TestsPlugin extends AutoPlugin {
   }
 
   private val generateTests = Def.task {
-    val file = (sourceManaged in Test).value / "RuleSuite.scala"
+    val file = (Test / sourceManaged).value / "RuleSuite.scala"
 
     val suite =
       """class RuleSuite extends scalafix.testkit.AbstractSemanticRuleSuite with org.scalatest.FunSpecLike {
