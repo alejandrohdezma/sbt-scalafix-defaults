@@ -32,48 +32,44 @@ object SbtScalafixDefaults extends AutoPlugin {
 
   override def trigger = allRequirements
 
-  override def buildSettings: Seq[Def.Setting[_]] =
-    Seq(
-      semanticdbEnabled          := true,
-      semanticdbVersion          := scalafixSemanticdb.revision,
-      scalafixScalaBinaryVersion := scalaBinaryVersion.value,
-      scalacOptions ++= on {
-        case (2, 13) => Seq("-Wunused", "-Wconf:cat=unused:info")
-        case (2, 12) => Seq("-Ywarn-unused")
-      }.value
-    )
+  override def buildSettings: Seq[Def.Setting[_]] = Seq(
+    semanticdbEnabled := true,
+    semanticdbVersion := scalafixSemanticdb.revision
+  )
 
   @SuppressWarnings(Array("scalafix:Disable.blocking.io"))
-  override def globalSettings: Seq[Def.Setting[_]] =
-    Seq(
-      scalafixOnCompile     := true,
-      scalafixDependencies ++= scalafixDefaultDependencies,
-      onLoad := onLoad.value andThen { state =>
-        val defaults = Source.fromResource(".scalafix.conf", getClass.getClassLoader).mkString
+  override def globalSettings: Seq[Def.Setting[_]] = Seq(
+    scalafixOnCompile     := true,
+    scalafixDependencies ++= scalafixDefaultDependencies,
+    onLoad := onLoad.value andThen { state =>
+      val defaults = Source.fromResource(".scalafix.conf", getClass.getClassLoader).mkString
 
-        IO.write(file(".scalafix.conf"), defaults)
+      IO.write(file(".scalafix.conf"), defaults)
 
-        val extra = file(".scalafix-extra.conf")
+      val extra = file(".scalafix-extra.conf")
 
-        if (extra.exists())
-          IO.append(file(".scalafix.conf"), "\n" + IO.read(extra))
+      if (extra.exists())
+        IO.append(file(".scalafix.conf"), "\n" + IO.read(extra))
 
-        state
-      }
-    )
-
-  override def projectSettings: Seq[Def.Setting[_]] =
-    Seq(
-      scalacOptions += "-Yrangepos",
-      scalacOptions += s"-Xplugin-require:semanticdb"
-    )
-
-  private def on[A](pf: PartialFunction[(Long, Long), A]): Def.Initialize[A] =
-    Def.setting {
-      CrossVersion.partialVersion(scalaVersion.value) match {
-        case Some(v) => pf(v)
-        case _       => sys.error("Invalid Scala version")
-      }
+      state
     }
+  )
+
+  override def projectSettings: Seq[Def.Setting[_]] = Seq(
+    scalafixScalaBinaryVersion := scalaBinaryVersion.value,
+    scalacOptions              += "-Yrangepos",
+    scalacOptions              += s"-Xplugin-require:semanticdb",
+    scalacOptions ++= on {
+      case (2, 13) => Seq("-Wunused", "-Wconf:cat=unused:info")
+      case (2, 12) => Seq("-Ywarn-unused")
+    }.value
+  )
+
+  private def on[A](pf: PartialFunction[(Long, Long), A]): Def.Initialize[A] = Def.setting {
+    CrossVersion.partialVersion(scalaVersion.value) match {
+      case Some(v) => pf(v)
+      case _       => sys.error("Invalid Scala version")
+    }
+  }
 
 }
