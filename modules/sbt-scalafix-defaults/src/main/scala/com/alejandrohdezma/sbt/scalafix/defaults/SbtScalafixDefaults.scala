@@ -39,7 +39,7 @@ object SbtScalafixDefaults extends AutoPlugin {
 
   @SuppressWarnings(Array("scalafix:Disable.blocking.io"))
   override def globalSettings: Seq[Def.Setting[_]] = Seq(
-    scalafixOnCompile     := true,
+    scalafixOnCompile     := !sys.env.contains("CI"),
     scalafixDependencies ++= scalafixDefaultDependencies,
     onLoad := onLoad.value andThen { state =>
       val defaults = Source.fromResource(".scalafix.conf", getClass.getClassLoader).mkString
