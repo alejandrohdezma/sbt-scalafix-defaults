@@ -1,4 +1,4 @@
 # this test ensures the settings added by this project works in cross-compilation builds
-> +compile
+> +scalafix
 $ must-mirror .scalafix.conf expected.conf
 $ must-mirror src/main/scala/Main.scala src/main/resources/Main.scala_expected
