@@ -7,14 +7,14 @@
 Add the following line to your `plugins.sbt` file:
 
 ```sbt
-addSbtPlugin("com.alejandrohdezma" % "sbt-scalafix-defaults" % "0.5.1")
+addSbtPlugin("com.alejandrohdezma" % "sbt-scalafix-defaults" % "0.6.0")
 ```
 
 > You'll also need to provide the [`sbt-scalafix` plugin](https://github.com/scalacenter/sbt-scalafix).
 
 ## Usage
 
-The included plugin activates automatically. It will add some default dependencies to `scalafixDependencies`, enable `scalafixOnCompile` (except when running on CI) & semanticdb by default and create a `.scalafix.conf` in your project's root folder with [this content](https://github.com/alejandrohdezma/sbt-scalafix-defaults/blob/master/.scalafix.conf).
+The included plugin activates automatically. It will add some default dependencies to `scalafixDependencies`, enable `scalafixOnCompile`(except when running on CI) & semanticdb by default and create a `.scalafix.conf` in your project's root folder with [this content](https://github.com/alejandrohdezma/sbt-scalafix-defaults/blob/master/.scalafix.conf).
 
 > You can add the `.scalafix.conf` file to the repository's `.gitignore`, since it's going to be automatically re-created on every build.
 
