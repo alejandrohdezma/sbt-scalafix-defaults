@@ -18,8 +18,7 @@ package com.alejandrohdezma.sbt.scalafix.defaults
 
 import sbt._
 
-/** This plugin just exposes the default Scalafix dependencies to they can be
-  * automatically updated by `scala-steward`.
+/** This plugin just exposes the default Scalafix dependencies to they can be automatically updated by `scala-steward`.
   */
 object ScalafixDependenciesPlugin extends AutoPlugin {
 
