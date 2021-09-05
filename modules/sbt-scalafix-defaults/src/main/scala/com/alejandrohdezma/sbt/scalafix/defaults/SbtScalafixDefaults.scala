@@ -41,7 +41,7 @@ object SbtScalafixDefaults extends AutoPlugin {
   override def globalSettings: Seq[Def.Setting[_]] = Seq(
     scalafixOnCompile     := !sys.env.contains("CI"),
     scalafixDependencies ++= scalafixDefaultDependencies,
-    onLoad := onLoad.value andThen { state =>
+    onLoad := onLoad.value.andThen { state =>
       val defaults = Source.fromResource(".scalafix.conf", getClass.getClassLoader).mkString
 
       IO.write(file(".scalafix.conf"), defaults)
