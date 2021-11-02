@@ -2,8 +2,10 @@ ThisBuild / scalaVersion                  := "2.13.7"
 ThisBuild / organization                  := "com.alejandrohdezma"
 ThisBuild / scalafixDependencies         ++= scalafixDefaultDependencies
 ThisBuild / pluginCrossBuild / sbtVersion := "1.3.0"
+ThisBuild / semanticdbEnabled             := true
+ThisBuild / semanticdbVersion             := scalafixSemanticdb.revision
 
-addCommandAlias("ci-test", "scalafixEnable; fix --check; mdoc; scripted")
+addCommandAlias("ci-test", "fix --check; mdoc; scripted")
 addCommandAlias("ci-docs", "github; mdoc; headerCreateAll")
 addCommandAlias("ci-publish", "github; ci-release")
 
