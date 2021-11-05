@@ -26,7 +26,7 @@ object ScalafixDependenciesPlugin extends AutoPlugin {
 
     /** Scalafix dependencies added by this plugin */
     lazy val scalafixDefaultDependencies: Seq[ModuleID] = Seq(
-      "com.github.liancheng" %% "organize-imports" % "0.5.0",
+      "com.github.liancheng" %% "organize-imports" % "0.6.0",
       "com.github.vovapolu"  %% "scaluzzi"         % "0.1.20"
     )
 
