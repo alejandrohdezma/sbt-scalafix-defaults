@@ -37,12 +37,21 @@ object SbtScalafixDefaults extends AutoPlugin {
     semanticdbVersion := scalafixSemanticdb.revision
   )
 
-  @SuppressWarnings(Array("scalafix:Disable.blocking.io"))
   override def globalSettings: Seq[Def.Setting[_]] = Seq(
     scalafixOnCompile     := !sys.env.contains("CI"),
-    scalafixDependencies ++= scalafixDefaultDependencies,
-    onLoad := onLoad.value.andThen { state =>
-      val defaults = Source.fromResource(".scalafix.conf", getClass.getClassLoader).mkString
+    scalafixDependencies ++= scalafixDefaultDependencies
+  )
+
+  @SuppressWarnings(Array("scalafix:Disable.blocking.io"))
+  override def projectSettings: Seq[Def.Setting[_]] = Seq(
+    scalafixScalaBinaryVersion := scalaBinaryVersion.value,
+    scalafixConfig := {
+      val resource = scalaVersion.value match {
+        case v if v.startsWith("2") => ".scalafix.conf"
+        case v if v.startsWith("3") => ".scalafix-3.conf"
+      }
+
+      val defaults = Source.fromResource(resource, getClass.getClassLoader).mkString
 
       IO.write(file(".scalafix.conf"), defaults)
 
@@ -51,24 +60,20 @@ object SbtScalafixDefaults extends AutoPlugin {
       if (extra.exists())
         IO.append(file(".scalafix.conf"), "\n" + IO.read(extra))
 
-      state
-    }
-  )
-
-  override def projectSettings: Seq[Def.Setting[_]] = Seq(
-    scalafixScalaBinaryVersion := scalaBinaryVersion.value,
-    scalacOptions              += "-Yrangepos",
-    scalacOptions              += s"-Xplugin-require:semanticdb",
+      Some(file(".scalafix.conf"))
+    },
+    scalacOptions ++= on { case (2, _) => Seq("-Yrangepos") }.value,
+    scalacOptions ++= on { case (2, _) => Seq("-Xplugin-require:semanticdb") }.value,
     scalacOptions ++= on {
       case (2, 13) => Seq("-Wunused", "-Wconf:cat=unused:info")
       case (2, 12) => Seq("-Ywarn-unused")
     }.value
   )
 
-  private def on[A](pf: PartialFunction[(Long, Long), A]): Def.Initialize[A] = Def.setting {
+  private def on[A](pf: PartialFunction[(Long, Long), Seq[A]]): Def.Initialize[Seq[A]] = Def.setting {
     CrossVersion.partialVersion(scalaVersion.value) match {
-      case Some(v) => pf(v)
-      case _       => sys.error("Invalid Scala version")
+      case Some(v) => pf.lift(v).getOrElse(Nil)
+      case _       => Nil
     }
   }
 

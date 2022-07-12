@@ -20,3 +20,4 @@ lazy val `sbt-scalafix-defaults` = module
   .settings(addSbtPlugin(scalafix))
   .settings(scriptedLaunchOpts += s"-Dplugin.version=${version.value}")
   .settings(Compile / unmanagedResources += (LocalRootProject / baseDirectory).value / ".scalafix.conf")
+  .settings(Compile / unmanagedResources += (LocalRootProject / baseDirectory).value / ".scalafix-3.conf")
