@@ -38,7 +38,6 @@ object SbtScalafixDefaults extends AutoPlugin {
   )
 
   override def globalSettings: Seq[Def.Setting[_]] = Seq(
-    scalafixOnCompile     := !sys.env.contains("CI"),
     scalafixDependencies ++= scalafixDefaultDependencies
   )
 
