@@ -1,4 +1,4 @@
-ThisBuild / scalaVersion                  := "2.12.16"
+ThisBuild / scalaVersion                  := "2.12.17"
 ThisBuild / organization                  := "com.alejandrohdezma"
 ThisBuild / scalafixDependencies         ++= scalafixDefaultDependencies
 ThisBuild / pluginCrossBuild / sbtVersion := "1.3.0"
