@@ -74,16 +74,6 @@ Disable.symbols = [
     """
   }
   {
-    regex = "^\\Qscala/collection/mutable\\E.*$"
-    id = "scala.collection.mutable"
-    message = """
-      If you want to use mutable collections it is better to use Java collections instead, they have a better performance.
-      To disable this error you can use:
-        - @SuppressWarnings(Array("scalafix:Disable.scala.collection.mutable"))
-        - // scalafix:ok Disable.scala.collection.mutable
-    """
-  }
-  {
     regex = "^\\Qscala/collection/parallel\\E.*$"
     id = "scala.collection.parallel"
     message = """
@@ -91,41 +81,6 @@ Disable.symbols = [
       To disable this error you can use:
         - @SuppressWarnings(Array("scalafix:Disable.scala.collection.parallel"))
         - // scalafix:ok Disable.scala.collection.parallel
-    """
-  }
-  {
-    regex = "^\\Qscala/math/Big\\E.*$"
-    id = "scala.math"
-    message = """
-      Scala arbitrary precision numbers are broken (https://github.com/scala/bug/issues/9670).
-      To disable this error you can use:
-        - @SuppressWarnings(Array("scalafix:Disable.scala.math"))
-        - // scalafix:ok Disable.scala.math
-    """
-  }
-  {
-    regex = {
-      includes = [
-        "^\\Qjava/io\\E.*$"
-        "^\\Qscala/io/Source\\E.*$"
-      ]
-    }
-    id = "blocking.io"
-    message = """
-      This is a legacy blocking API, prefer `java.nio`.
-      To disable this error you can use:
-        - @SuppressWarnings(Array("scalafix:Disable.blocking.io"))
-        - // scalafix:ok Disable.blocking.io
-    """
-  }
-  {
-    regex = "^\\Qjava/net/URL#\\E.*$"
-    id = "URL"
-    message = """
-      URL talks to the network for equality, prefer URI.
-      To disable this error you can use:
-        - @SuppressWarnings(Array("scalafix:Disable.URL"))
-        - // scalafix:ok Disable.URL
     """
   }
   {
@@ -260,12 +215,6 @@ DisableSyntax {
 }
  */
 
-import java.io.File
-import java.net.URL
-
-import scala.io.Source
-import scala.math.BigDecimal
-import scala.math.BigInt
 import scala.util.Failure
 import scala.util.Success
 import scala.util.Try
@@ -274,24 +223,21 @@ object Disable {
 
   object symbols {
 
-    Left(42).left.get   // assert: Disable.Either.get
+    Left(42).left.get // assert: Disable.Either.get
+
     Right(42).right.get // assert: Disable.Either.get
 
     Option(42).get // assert: Disable.Option.get
-    Some(42).get   // assert: Disable.Option.get
-    None.get       // assert: Disable.Option.get
 
-    Try(42).get                               // assert: Disable.Try.get
-    Success(42).get                           // assert: Disable.Try.get
+    Some(42).get // assert: Disable.Option.get
+
+    None.get // assert: Disable.Option.get
+
+    Try(42).get // assert: Disable.Try.get
+
+    Success(42).get // assert: Disable.Try.get
+
     Failure(new IllegalArgumentException).get // assert: Disable.Try.get
-
-    BigDecimal("1.1") // assert: Disable.scala.math
-    BigInt("42")      // assert: Disable.scala.math
-
-    new File(".")             // assert: Disable.blocking.io
-    Source.fromString("miau") // assert: Disable.blocking.io
-
-    new URL("https://example.com") // assert: Disable.URL
 
     42.equals(42) // assert: Disable.equals
 
@@ -300,7 +246,9 @@ object Disable {
     42.toString // assert: Disable.toString
 
     object WeekDay extends Enumeration { // assert: Disable.Enumeration
+
       val Mon, Tue, Wed, Thu, Fri, Sat, Sun = Value
+
     }
 
     println("Hello World!") // assert: Disable.println
