@@ -1,8 +1,10 @@
 package fix
 
-import scalafix.testkit._
-import org.scalatest.FunSuiteLike
+import org.scalatest.funsuite.AnyFunSuiteLike
+import scalafix.testkit.AbstractSemanticRuleSuite
 
-class ConfigurationSuite extends AbstractSemanticRuleSuite with FunSuiteLike {
+class ConfigurationSuite extends AbstractSemanticRuleSuite with AnyFunSuiteLike {
+
   runAllTests()
+
 }
