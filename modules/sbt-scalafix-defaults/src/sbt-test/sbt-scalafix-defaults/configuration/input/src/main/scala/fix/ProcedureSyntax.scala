@@ -7,6 +7,7 @@ rules = [
   NoValInForComprehension
   OrganizeImports
   ProcedureSyntax
+  RedundantSyntax
   RemoveUnused
 ]
 
@@ -26,53 +27,6 @@ OrganizeImports {
 RemoveUnused.imports = false
 
 Disable.symbols = [
-  {
-    regex = {
-      includes = [
-        "^\\Qscala/util/Either.RightProjection#get().\\E$",
-        "^\\Qscala/util/Either.LeftProjection#get().\\E$"
-      ]
-    }
-    id = "Either.get"
-    message = """
-      Do not use Either.get(). It can throw an exception in case of wrong side.
-      To disable this error you can use:
-        - @SuppressWarnings(Array("scalafix:Disable.Either.get"))
-        - // scalafix:ok Disable.Either.get
-    """
-  }
-  {
-    regex = {
-      includes = [
-        "^\\Qscala/Option#get().\\E$",
-        "^\\Qscala/Some#get().\\E$",
-        "^\\Qscala/None.get().\\E$"
-      ]
-    }
-    id = "Option.get"
-    message = """
-      Do not use Option.get(). It can throw an exception in case of None.
-      To disable this error you can use:
-        - @SuppressWarnings(Array("scalafix:Disable.Option.get"))
-        - // scalafix:ok Disable.Option.get
-    """
-  }
-  {
-    regex = {
-      includes = [
-        "^\\Qscala/util/Try#get().\\E$",
-        "^\\Qscala/util/Success#get().\\E$",
-        "^\\Qscala/util/Failure#get().\\E$"
-      ]
-    }
-    id = "Try.get"
-    message = """
-      Do not use Try.get(). It can throw an exception in case of failure.
-      To disable this error you can use:
-        - @SuppressWarnings(Array("scalafix:Disable.Try.get"))
-        - // scalafix:ok Disable.Try.get
-    """
-  }
   {
     regex = "^\\Qscala/collection/parallel\\E.*$"
     id = "scala.collection.parallel"
@@ -124,42 +78,6 @@ Disable.symbols = [
     """
   }
   {
-    regex = {
-      includes = [
-        "^\\Qscala/collection/IterableLike#head().\\E$",
-        "^\\Qscala/collection/GenTraversableLike#head().\\E$",
-        "^\\Qscala/collection/LinearSeqOptimized#head().\\E$",
-        "^\\Qscala/collection/IndexedSeqOptimized#head().\\E$",
-        "^\\Qscala/collection/TraversableLike#head().\\E$"
-      ]
-    }
-    id = "head"
-    message = """
-      Try not to use `head`, it is not a total function.
-      To disable this error you can use:
-        - @SuppressWarnings(Array("scalafix:Disable.head"))
-        - // scalafix:ok Disable.head
-    """
-  }
-  {
-    regex = {
-      includes = [
-        "^\\Qscala/collection/IterableLike#last().\\E$",
-        "^\\Qscala/collection/GenTraversableLike#last().\\E$",
-        "^\\Qscala/collection/LinearSeqOptimized#last().\\E$",
-        "^\\Qscala/collection/IndexedSeqOptimized#last().\\E$",
-        "^\\Qscala/collection/TraversableLike#last().\\E$"
-      ]
-    }
-    id = "last"
-    message = """
-      Try not to use `last`, it is not a total function.
-      To disable this error you can use:
-        - @SuppressWarnings(Array("scalafix:Disable.last"))
-        - // scalafix:ok Disable.last
-    """
-  }
-  {
     symbol = "scala/Predef/println"
     id = "println"
     message = """
@@ -174,33 +92,18 @@ Disable.symbols = [
 Disable.ifSynthetic = [
   "scala/Option.option2Iterable"
   "scala/Predef.any2stringadd"
-  {
-    regex = {
-      includes = [
-        "^\\Qscala/collection/MapLike#apply().\\E$"
-        "^\\Qscala/collection/LinearSeqOptimized#apply().\\E$"
-      ]
-    }
-    id = "collection.apply"
-    message = """
-      Try not to use apply method from collections, it is not a total function.
-      To disable this error you can use:
-        - @SuppressWarnings(Array("scalafix:Disable.collection.apply"))
-        - // scalafix:ok Disable.collection.apply
-    """
-  }
 ]
 
 DisableSyntax {
-  noAsInstanceOf = true
-  noContravariantTypes = true
-  noCovariantTypes = true
-  noDefaultArgs = true
+  noAsInstanceOf = false
+  noContravariantTypes = false
+  noCovariantTypes = false
+  noDefaultArgs = false
   noFinalVal = true
   noFinalize = true
   noImplicitConversion = true
   noImplicitObject = true
-  noIsInstanceOf = true
+  noIsInstanceOf = false
   noNulls = true
   noReturns = true
   noSemicolons = true

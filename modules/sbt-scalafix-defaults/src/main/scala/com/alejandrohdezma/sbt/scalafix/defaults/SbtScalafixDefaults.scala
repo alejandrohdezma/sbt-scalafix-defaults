@@ -41,7 +41,6 @@ object SbtScalafixDefaults extends AutoPlugin {
     scalafixDependencies ++= scalafixDefaultDependencies
   )
 
-  @SuppressWarnings(Array("scalafix:Disable.blocking.io"))
   override def projectSettings: Seq[Def.Setting[_]] = Seq(
     scalafixScalaBinaryVersion := scalaBinaryVersion.value,
     scalafixConfig := {

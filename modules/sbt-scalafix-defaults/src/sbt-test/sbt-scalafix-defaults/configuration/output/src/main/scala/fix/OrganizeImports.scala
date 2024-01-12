@@ -11,10 +11,15 @@ import cats.kernel.Hash
 object OrganizeImports {
 
   val eqString   = implicitly[Eq[String]]
+
   val hashString = implicitly[Hash[String]]
+
   val showString = implicitly[Show[String]]
+
   val oneMinute  = 1.minute
+
   val randomUUID = UUID.randomUUID()
+
   val myList     = new ArrayList[String]()
 
 }
