@@ -4,16 +4,16 @@ ThisBuild / scalafixDependencies         ++= scalafixDefaultDependencies
 ThisBuild / pluginCrossBuild / sbtVersion := "1.3.0"
 ThisBuild / semanticdbEnabled             := true
 ThisBuild / semanticdbVersion             := scalafixSemanticdb.revision
+ThisBuild / versionPolicyIntention        := Compatibility.BinaryAndSourceCompatible
 
-addCommandAlias("ci-test", "fix --check; mdoc; scripted")
+addCommandAlias("ci-test", "fix --check; versionPolicyCheck; mdoc; scripted")
 addCommandAlias("ci-docs", "github; mdoc; headerCreateAll")
-addCommandAlias("ci-publish", "github; ci-release")
+addCommandAlias("ci-publish", "versionCheck; github; ci-release")
 
 lazy val scalafix = "ch.epfl.scala" % "sbt-scalafix" % "[0.11.0,)" % Provided // scala-steward:off
 
 lazy val documentation = project
   .enablePlugins(MdocPlugin)
-  .settings(mdocOut := file("."))
 
 lazy val `sbt-scalafix-defaults` = module
   .enablePlugins(SbtPlugin)
