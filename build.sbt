@@ -10,7 +10,7 @@ addCommandAlias("ci-test", "fix --check; versionPolicyCheck; mdoc; scripted")
 addCommandAlias("ci-docs", "github; mdoc; headerCreateAll")
 addCommandAlias("ci-publish", "versionCheck; github; ci-release")
 
-lazy val scalafix = "ch.epfl.scala" % "sbt-scalafix" % "[0.11.0,)" % Provided // scala-steward:off
+lazy val scalafix = "ch.epfl.scala" % "sbt-scalafix" % "[0.12.0,)" % Provided // scala-steward:off
 
 lazy val documentation = project
   .enablePlugins(MdocPlugin)

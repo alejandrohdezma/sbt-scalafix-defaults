@@ -42,7 +42,10 @@ object SbtScalafixDefaults extends AutoPlugin {
   )
 
   override def projectSettings: Seq[Def.Setting[_]] = Seq(
-    scalafixScalaBinaryVersion := scalaBinaryVersion.value,
+    scalafixScalaBinaryVersion := {
+      if (scalaBinaryVersion.value.startsWith("3")) scalafixScalaBinaryVersion.value
+      else scalaBinaryVersion.value
+    },
     scalafixConfig := {
       val resource = scalaVersion.value match {
         case v if v.startsWith("2") => ".scalafix.conf"
