@@ -1,7 +1,7 @@
 ThisBuild / scalaVersion                  := _root_.scalafix.sbt.BuildInfo.scala212
 ThisBuild / organization                  := "com.alejandrohdezma"
 ThisBuild / scalafixDependencies         ++= scalafixDefaultDependencies
-ThisBuild / pluginCrossBuild / sbtVersion := "1.3.0"
+ThisBuild / pluginCrossBuild / sbtVersion := "1.3.13"
 ThisBuild / semanticdbEnabled             := true
 ThisBuild / semanticdbVersion             := scalafixSemanticdb.revision
 ThisBuild / versionPolicyIntention        := Compatibility.BinaryAndSourceCompatible
