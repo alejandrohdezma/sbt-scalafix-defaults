@@ -22,7 +22,6 @@ import sbt.Def
 import sbt.Keys._
 import sbt._
 
-import com.alejandrohdezma.sbt.scalafix.defaults.ScalafixDependenciesPlugin.autoImport._
 import scalafix.sbt.ScalafixPlugin
 import scalafix.sbt.ScalafixPlugin.autoImport._
 
@@ -37,18 +36,9 @@ object SbtScalafixDefaults extends AutoPlugin {
     semanticdbVersion := scalafixSemanticdb.revision
   )
 
-  override def globalSettings: Seq[Def.Setting[_]] = Seq(
-    scalafixDependencies ++= scalafixDefaultDependencies
-  )
-
   override def projectSettings: Seq[Def.Setting[_]] = Seq(
     scalafixConfig := {
-      val resource = scalaVersion.value match {
-        case v if v.startsWith("2") => ".scalafix.conf"
-        case v if v.startsWith("3") => ".scalafix-3.conf"
-      }
-
-      val defaults = Source.fromResource(resource, getClass.getClassLoader).mkString
+      val defaults = Source.fromResource(".scalafix.conf", getClass.getClassLoader).mkString
 
       IO.write(file(".scalafix.conf"), defaults)
 
@@ -64,6 +54,7 @@ object SbtScalafixDefaults extends AutoPlugin {
     scalacOptions ++= on {
       case (2, 13) => Seq("-Wunused", "-Wconf:cat=unused:info")
       case (2, 12) => Seq("-Ywarn-unused")
+      case (3, _)  => Seq("-Wconf:id=E198:info", "-Wunused:all")
     }.value
   )
 

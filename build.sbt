@@ -1,10 +1,9 @@
 ThisBuild / scalaVersion                  := _root_.scalafix.sbt.BuildInfo.scala212
 ThisBuild / organization                  := "com.alejandrohdezma"
-ThisBuild / scalafixDependencies         ++= scalafixDefaultDependencies
 ThisBuild / pluginCrossBuild / sbtVersion := "1.3.13"
 ThisBuild / semanticdbEnabled             := true
 ThisBuild / semanticdbVersion             := scalafixSemanticdb.revision
-ThisBuild / versionPolicyIntention        := Compatibility.BinaryAndSourceCompatible
+ThisBuild / versionPolicyIntention        := Compatibility.None
 
 addCommandAlias("ci-test", "fix --check; versionPolicyCheck; mdoc; scripted")
 addCommandAlias("ci-docs", "github; mdoc; headerCreateAll")
@@ -20,4 +19,3 @@ lazy val `sbt-scalafix-defaults` = module
   .settings(addSbtPlugin(scalafix))
   .settings(scriptedLaunchOpts += s"-Dplugin.version=${version.value}")
   .settings(Compile / unmanagedResources += (LocalRootProject / baseDirectory).value / ".scalafix.conf")
-  .settings(Compile / unmanagedResources += (LocalRootProject / baseDirectory).value / ".scalafix-3.conf")
