@@ -10,6 +10,8 @@ addSbtPlugin("com.alejandrohdezma" % "sbt-scalafix-defaults" % "0.15.0")
 
 > You'll also need to provide the [`sbt-scalafix` plugin](https://github.com/scalacenter/sbt-scalafix).
 
+> This plugin is cross-published for **sbt 1.x** (Scala 2.12) and **sbt 2.x** (Scala 3); the line above resolves the right artifact automatically.
+
 ## Usage
 
 The included plugin activates automatically. It will add some default dependencies to `scalafixDependencies`, enable `scalafixOnCompile`(except when running on CI) & semanticdb by default and create a `.scalafix.conf` in your project's root folder with [this content](https://github.com/alejandrohdezma/sbt-scalafix-defaults/blob/master/.scalafix.conf).
