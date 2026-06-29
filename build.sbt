@@ -4,7 +4,7 @@ ThisBuild / organization                  := "com.alejandrohdezma"
 ThisBuild / pluginCrossBuild / sbtVersion := scalaVersion.value.on(2)("1.12.12").getOrElse("2.0.0")
 ThisBuild / semanticdbEnabled             := true
 ThisBuild / semanticdbVersion             := scalafixSemanticdb.revision
-ThisBuild / versionPolicyIntention        := Compatibility.BinaryAndSourceCompatible
+ThisBuild / versionPolicyIntention        := Compatibility.None
 
 addCommandAlias("ci-test", "fix --check; +versionPolicyCheck; mdoc; +publishLocal; +scripted")
 addCommandAlias("ci-docs", "github; mdoc; headerCreateAll")
