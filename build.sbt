@@ -1,11 +1,12 @@
 ThisBuild / scalaVersion                  := _root_.scalafix.sbt.BuildInfo.scala212
+ThisBuild / crossScalaVersions            := Seq(scalaVersion.value, "3.8.4")
 ThisBuild / organization                  := "com.alejandrohdezma"
-ThisBuild / pluginCrossBuild / sbtVersion := "1.3.13"
+ThisBuild / pluginCrossBuild / sbtVersion := scalaVersion.value.on(2)("1.12.12").getOrElse("2.0.0")
 ThisBuild / semanticdbEnabled             := true
 ThisBuild / semanticdbVersion             := scalafixSemanticdb.revision
-ThisBuild / versionPolicyIntention        := Compatibility.BinaryAndSourceCompatible
+ThisBuild / versionPolicyIntention        := Compatibility.None
 
-addCommandAlias("ci-test", "fix --check; versionPolicyCheck; mdoc; scripted")
+addCommandAlias("ci-test", "fix --check; +versionPolicyCheck; mdoc; +publishLocal; +scripted")
 addCommandAlias("ci-docs", "github; mdoc; headerCreateAll")
 addCommandAlias("ci-publish", "versionCheck; github; ci-release")
 

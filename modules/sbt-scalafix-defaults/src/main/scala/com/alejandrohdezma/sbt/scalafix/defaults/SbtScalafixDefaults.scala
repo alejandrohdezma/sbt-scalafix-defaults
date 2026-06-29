@@ -31,12 +31,12 @@ object SbtScalafixDefaults extends AutoPlugin {
 
   override def trigger = allRequirements
 
-  override def buildSettings: Seq[Def.Setting[_]] = Seq(
+  override def buildSettings = Seq(
     semanticdbEnabled := true,
     semanticdbVersion := scalafixSemanticdb.revision
   )
 
-  override def projectSettings: Seq[Def.Setting[_]] = Seq(
+  override def projectSettings = Seq(
     scalafixConfig := {
       val defaults = Source.fromResource(".scalafix.conf", getClass.getClassLoader).mkString
 
